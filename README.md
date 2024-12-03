@@ -77,6 +77,6 @@ the layers.
 - Please ensure that you add your OpenAI API key to the empty text file named "OpenAI_API_Key" in order to access the
   OpenAI API.
 
-## 8. Query screenshots
+## 8. Query Screenshots
 
-![Screenshot1](/queries-answer.png)
+![Screenshot](/queries-answer.png)
