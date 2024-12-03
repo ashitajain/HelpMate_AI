@@ -69,7 +69,7 @@ the layers.
 
 ## 6. System Architecture
 
-![architecture](./architecture.png)
+![](./architecture.png)
 
 ## 7. Prerequisites
 
@@ -79,4 +79,4 @@ the layers.
 
 ## 8. Query Screenshots
 
-![Screenshot](./queries-answer.png)
+![](./queries-answer.png)
