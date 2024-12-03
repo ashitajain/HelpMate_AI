@@ -71,62 +71,12 @@ the layers.
 
 ![architecture](architecture.png)
 
-## 7. Implementation Details
-
-The Flask application utilizes various functionalities:
-
-- **Routing:** Routing directs user requests to the relevant functions according to the specified URLs.
-- **Conversation Management:** Oversees the initiation of conversations, the generation of
-  responses utilizing OpenAI's chat model, and the maintenance of conversation history.
-- **User Input Processing:** User Input Processing involves capturing user input, conducting moderation checks, and
-  extracting user profiles from the conversation history, which includes converting the user input string into JSON
-  format through OpenAI Function calling.
-- **Recommendation Logic:** It assesses user profiles against laptop data, verifies the validity of recommendations,
-  and produces the corresponding recommendation text
-
-  ### Major Functions
-- `initialize_conversation()`: Initializes the variable conversation with the system message.
-- `get_chat_completions()`: Takes the ongoing conversation as the input and returns the response by the assistant.
-- `moderation_check()`: Checks if the user's or the assistant's message is inappropriate. If any of these is
-  inappropriate, it ends the conversation.
-- `intent_confirmation_layer()`: Evaluates if the chatbot has captured the user's profile clearly.
-- `dictionary_present()`: Checks if the final understanding of the user's profile is returned by the chatbot as a Python
-  dictionary.
-- `compare_laptops_with_user()`: Compares the user's profile with the different laptops and comes back with the top 3
-  recommendations.
-- `initialize_conv_reco()`: Initializes the recommendations conversation.
-
-  ### Prerequisites
+## Prerequisites
 
 - Python 3.7+
 - Please ensure that you add your OpenAI API key to the empty text file named "OpenAI_API_Key" in order to access the
   OpenAI API.
 
-## 8. Getting Started
+## 7. Query screenshots
 
-To begin utilizing ShopAssist AI, please proceed with the following instructions.
-
-1. **Clone the repository**
-   ``` shell
-   $ git clone https://github.com/SanjayaKumarSahoo/shop-assist-ai
-   ```
-2. **Enable the virtual environment**
-    ```shell
-    $ source venv/bin/activate 
-    ```
-
-3. **Install dependencies**
-    ```shell   
-    $ pip install -r requirements.txt
-    ```
-
-4. **Initialize the chatbot**
-    ```
-    $ flask run
-     # or
-    $ python3 app.py
-    ```
-
-## 9. Query screenshots
-
-![Screenshot1](/queries-answer.png)**
+![Screenshot1](/queries-answer.png)
