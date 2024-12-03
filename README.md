@@ -65,18 +65,11 @@ the layers.
   of the retrieved responses into a cross-encoder to score the relevance of the response w.r.t. the query.
 
 - **Retrieval Augmented Generation:** Now we have the final top search results, we can pass it to an GPT 3.5 along
-  with the user query and a well-engineered prompt, to generate a direct answer to the query along with citations,
-  rather than returning whole pages/chunks.
+  with the user query and a well-engineered prompt, to generate a direct answer to the query along with citations.
 
 ## 6. System Architecture
 
-ShopAssistAI operates on a client-server architecture. Users engage with a web interface that is hosted on a server
-utilizing the Flask application. This application communicates with OpenAI's API to facilitate conversation generation
-and moderation, while also accessing and comparing laptop data from an external database.
-
-![stages](./images/stages.png)
-
-![systemdesign](./images/system_design.png)
+![architecture](architecture.png)
 
 ## 7. Implementation Details
 
