@@ -1,11 +1,9 @@
-**# Building Effective Search Systems HelpMateAI
+# Building Effective Search Systems HelpMateAI
 
 ## 1. Background
 
-In today’s digital age, online shopping has become the preferred option for many consumers. However, the vast array of
-choices and the lack of personalised assistance can make the shopping experience overwhelming and challenging. To
-address this issue, we present ShopAssist AI. This chatbot combines the power of LLMs and rule-based functions to
-provide accurate and reliable recommendations during the online laptop shopping experience.
+This project demonstrate "Building Effective Search Systems HelpMateAI" with a long insurance policy document using RAG
+techniques.
 
 ## 2. Problem Statement
 
@@ -45,23 +43,30 @@ the layers.
    make sure that the prompt is exhaustive in its instructions, and the relevant information is correctly passed to the
    prompt. We may also choose to provide some few-shot examples in an attempt to improve the LLM output.
 
-## 5. System Functionalities
+## 5. System Layers
 
-- **User Interface:** The ShopAssistAI platform features an intuitive web interface that allows users to engage
-  seamlessly with the conversational AI assistant.
-- **Conversational AI:** At the heart of this system is the conversational AI, which leverages OpenAI's chat model to
-  guide users by asking appropriate questions and discerning their specific needs.
-- **User Input Moderation:**  To ensure a secure conversational environment, each inputs are regulated through OpenAI's
-  moderation API.
-- **User Profile Extraction:** The AI assistant collects vital information during the conversation to
-  construct a user profile that accurately represents their laptop preferences, including budget, display quality,
-  processing power, portability etc. utilizing OpenAI's function calling mechanism to convert user requirement strings
-  into JSON format.
+- **Reading & Processing PDF File:** We will be using [pdfplumber](https://pypi.org/project/pdfplumber/) to read and
+  process the PDF files. [pdfplumber](https://pypi.org/project/pdfplumber/) allows
+  for better parsing of the PDF file as it can read various elements of the PDF apart from the plain text, such as,
+  tables, images, etc. It also offers wide functionalities and visual debugging features to help with
+  advanced preprocessing as well.
 
-The dataset  [laptop_data.csv](./chatbot/laptop_data.csv) includes rows that detail the specifications of each laptop,
-with a concise
-description provided at the end of each entry. The chatbot will employ large language models to interpret the
-`Description` column and generate recommendations.
+- **Document Chunking:** The document contains several pages and contains huge text, before generating the embeddings,
+  we need to generate the chunks. Let's start with a basic chunking technique, and chunking the text with fixed size.
+
+- **Generating Embeddings:**  Generates embedding with SentenceTransformer with all-MiniLM-L6-v2 model.
+
+- **Store Embeddings In ChromaDB:** In this section we will store embedding in ChromaDB.
+
+- **Semantic Search with Cache:** In this section we will introduce cache collection layer for embeddings.
+
+- **Re-Ranking with a Cross Encoder:** Re-ranking the results obtained from the semantic search will sometime
+  significantly improve the relevance of the retrieved results. This is often done by passing the query paired with each
+  of the retrieved responses into a cross-encoder to score the relevance of the response w.r.t. the query.
+
+- **Retrieval Augmented Generation:** Now we have the final top search results, we can pass it to an GPT 3.5 along
+  with the user query and a well-engineered prompt, to generate a direct answer to the query along with citations,
+  rather than returning whole pages/chunks.
 
 ## 6. System Architecture
 
